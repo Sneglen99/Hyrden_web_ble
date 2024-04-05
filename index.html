@@ -12,7 +12,8 @@
 
 <body>
     <div class="topnav">
-        <h1>ESP32 Web BLE Application</h1>
+        <h1>Hyrden</h1>
+        <button id="install-button" style="display: none;">Install APP</button>
     </div>
     <div class="content">
         <div class="card-grid">
@@ -46,6 +47,7 @@
     </div>
 </body>
 
+<script src="install-button.js"></script>
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
