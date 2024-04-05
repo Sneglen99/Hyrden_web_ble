@@ -1,11 +1,3 @@
-<!--
-  Rui Santos
-  Complete project details at https://RandomNerdTutorials.com/esp32-web-bluetooth/
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files.
-  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
-
 <!DOCTYPE html>
 <html>
 
@@ -15,6 +7,7 @@
     <link rel="icon" type="image/png" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="UTF-8">
+    <link rel="manifest" href="manifest.json" />
 </head>
 
 <body>
@@ -52,7 +45,18 @@
         <p><a href="https://RandomNerdTutorials.com/esp32-web-bluetooth/">Read the full project here.</a></p>
     </div>
 </body>
+
 <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('service-worker.js').then(function (registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function (err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+
     // DOM Elements
     const connectButton = document.getElementById('connectBleButton');
     const disconnectButton = document.getElementById('disconnectBleButton');
@@ -218,8 +222,6 @@
         var datetime = day + "/" + month + "/" + year + " at " + hours + ":" + minutes + ":" + seconds;
         return datetime;
     }
-
-
 </script>
 
 </html>
