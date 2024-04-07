@@ -90,3 +90,8 @@ button {
 #install-button:hover {
     background-color: #0056b3;
 }
+
+/* Leaflet map */
+#map {
+    height: 80vh;
+}
