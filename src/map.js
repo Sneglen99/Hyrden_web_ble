@@ -9,7 +9,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Create a custom icons
 const sheep_icon = L.icon({
-    iconUrl: 'logo_no_background.png',
+    iconUrl: 'sheep_icon.png',
     iconSize: [30, 30],
     iconAnchor: [15, 15],
     popupAnchor: [0, -15]
