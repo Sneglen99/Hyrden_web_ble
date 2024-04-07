@@ -15,28 +15,26 @@ var user = L.circle([59.665939, 10.780280], {
     radius: 20
 }).addTo(map);
     
+user.bindPopup("Your position").openPopup();
 
-//function that gets the location and returns it
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        console.log("Geo Location not supported by browser");
-    }
-}
-//function that retrieves the position
+
+// Retrieves the position of the user
 function showPosition(position) {
     var location = {
         longitude: position.coords.longitude,
         latitude: position.coords.latitude
     }
     console.log(location)
-
-    // Set user location
+    
+    // Update user location
     user.setLatLng([location.latitude, location.longitude]);
-    user.bindPopup("Your position").openPopup();
     map.setView([location.latitude, location.longitude], 15);
-
+    
 }
-//request for location
-getLocation();
+
+// Get user location
+if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(showPosition);
+} else {
+    console.log("Geo Location not supported by browser");
+}
