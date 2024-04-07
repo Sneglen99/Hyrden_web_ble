@@ -12,10 +12,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
             sheep = elementToObserve.innerHTML.split(",");
             // alert(`Sheep ID: ${sheep[0]}\nLatitude: ${sheep[1]}\nLongitude: ${sheep[2]}`);
             
-            // Add a marker to the map
-            var sheep_marker = L.marker([sheep[1], sheep[2]], {icon:sheep_icon}).addTo(map);
-            sheep_marker.bindPopup(`Sheep ID: ${sheep[0]}`).openPopup();
-            map.setView([sheep[1], sheep[2]], 15);
+            sheep_marker.setLatLng([sheep[1], sheep[2]]);
         }
     }
 });
@@ -24,5 +21,5 @@ const observer = new MutationObserver((mutationsList, observer) => {
 observer.observe(elementToObserve, { childList: true });
 
 // Example: Change the 'innerHTML' of the element (this will trigger the observer)
-elementToObserve.innerHTML = 'abc,59.665939,10.780280';
+// elementToObserve.innerHTML = 'abc,59.665939,10.780280';
 

@@ -22,6 +22,8 @@ const farmer_icon = L.icon({
     popupAnchor: [0, -15]
 });
 
+// Add sheep location to the map
+var sheep_marker = L.marker([59.665939, 10.780280], { icon: sheep_icon }).addTo(map);
 
 // Add user location to the map
 var user_marker = L.marker([59.665939, 10.780280], { icon: farmer_icon }).addTo(map);
@@ -48,7 +50,7 @@ function get_user_initial_pos(position) {
     
     // Set user position
     user_marker.setLatLng([location.latitude, location.longitude]);
-    map.setView([location.latitude, location.longitude], 15);
+    map.setView([location.latitude, location.longitude], 16);
     user_marker.bindPopup("Your position").openPopup();
 }
 
