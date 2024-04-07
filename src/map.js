@@ -9,22 +9,22 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Create a custom icons
 const sheep_icon = L.icon({
-    iconUrl: 'sheep_icon.png',
+    iconUrl: 'logo_no_background.png',
     iconSize: [30, 30],
     iconAnchor: [15, 15],
     popupAnchor: [0, -15]
 });
 
-const farmer_icon = L.icon({
-    iconUrl: 'farmer_icon.png',
-    iconSize: [30, 30],
-    iconAnchor: [15, 15],
-    popupAnchor: [0, -15]
-});
+// const farmer_icon = L.icon({
+//     iconUrl: 'farmer_icon.png',
+//     iconSize: [30, 30],
+//     iconAnchor: [15, 15],
+//     popupAnchor: [0, -15]
+// });
 
 
 // Add user location to the map
-var user_marker = L.marker([59.665939, 10.780280], { icon: farmer_icon }).addTo(map);
+var user_marker = L.marker([59.665939, 10.780280]).addTo(map);
 
 
 // Update user position
