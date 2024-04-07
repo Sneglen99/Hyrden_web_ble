@@ -28,12 +28,26 @@ function showPosition(position) {
     
     // Update user location
     user.setLatLng([location.latitude, location.longitude]);
-    map.setView([location.latitude, location.longitude], 15);
     
 }
 
+// Get user location once
+function showPositionOnce(position) {
+    var location = {
+        longitude: position.coords.longitude,
+        latitude: position.coords.latitude
+    }
+    console.log(location)
+    
+    // Update user location
+    user.setLatLng([location.latitude, location.longitude]);
+    map.setView([location.latitude, location.longitude], 15);
+}
+
+
 // Get user location
 if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPositionOnce);
     navigator.geolocation.watchPosition(showPosition);
 } else {
     console.log("Geo Location not supported by browser");
