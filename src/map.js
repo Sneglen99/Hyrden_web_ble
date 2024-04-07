@@ -9,14 +9,14 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Create a custom icons
 const sheep_icon = L.icon({
-    iconUrl: 'img/sheep_icon.png',
+    iconUrl: '/img/sheep_icon.png',
     iconSize: [30, 30],
     iconAnchor: [15, 15],
     popupAnchor: [0, -15]
 });
 
 const farmer_icon = L.icon({
-    iconUrl: 'img/farmer_icon.png',
+    iconUrl: '/img/farmer_icon.png',
     iconSize: [30, 30],
     iconAnchor: [15, 15],
     popupAnchor: [0, -15]
