@@ -15,7 +15,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
             // Add a marker to the map
             var sheep_marker = L.marker([sheep[1], sheep[2]], {icon:sheep_icon}).addTo(map);
             sheep_marker.bindPopup(`Sheep ID: ${sheep[0]}`).openPopup();
-            sheep_marker.setView([sheep[1], sheep[2]], 15);
+            map.setView([sheep[1], sheep[2]], 15);
         }
     }
 });
