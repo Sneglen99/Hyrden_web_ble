@@ -7,48 +7,56 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 
+// Create a custom icons
+const sheep_icon = L.icon({
+    iconUrl: 'img/sheep_icon.png',
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
+    popupAnchor: [0, -15]
+});
+
+const farmer_icon = L.icon({
+    iconUrl: 'img/farmer_icon.png',
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
+    popupAnchor: [0, -15]
+});
+
+
 // Add user location to the map
-var user = L.circle([59.665939, 10.780280], {
-    color: 'blue',
-    fillColor: 'lightblue',
-    fillOpacity: 0.5,
-    radius: 20
-}).addTo(map);
-    
-user.bindPopup("Your position").openPopup();
+var user_marker = L.marker([59.665939, 10.780280], { icon: farmer_icon }).addTo(map);
 
 
-// Retrieves the position of the user
-function showPosition(position) {
+// Update user position
+function update_user_pos(position) {
     var location = {
         longitude: position.coords.longitude,
         latitude: position.coords.latitude
     }
-    console.log(location)
     
     // Update user location
-    user.setLatLng([location.latitude, location.longitude]);
+    user_marker.setLatLng([location.latitude, location.longitude]);
     
 }
 
-// Get user location once
-function showPositionOnce(position) {
+// Set the initial position of the user and change the view of the map
+function get_user_initial_pos(position) {
     var location = {
         longitude: position.coords.longitude,
         latitude: position.coords.latitude
     }
-    console.log(location)
     
-    // Update user location
-    user.setLatLng([location.latitude, location.longitude]);
+    // Set user position
+    user_marker.setLatLng([location.latitude, location.longitude]);
     map.setView([location.latitude, location.longitude], 15);
+    user_marker.bindPopup("Your position").openPopup();
 }
 
 
 // Get user location
 if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPositionOnce);
-    navigator.geolocation.watchPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(get_user_initial_pos);
+    navigator.geolocation.watchPosition(update_user_pos);
 } else {
     console.log("Geo Location not supported by browser");
 }

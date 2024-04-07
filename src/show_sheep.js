@@ -1,13 +1,6 @@
 // Identify the element you want to observe (replace 'your-element-id' with the actual ID or select it using other methods)
 const elementToObserve = document.getElementById('valueContainer');
 
-const sheep_icon = L.icon({
-    iconUrl: 'logo_no_background.png',
-    iconSize: [30, 30],
-    iconAnchor: [15, 15],
-    popupAnchor: [0, -15]
-});
-
 // Create a new instance of 'MutationObserver' and provide a callback function
 const observer = new MutationObserver((mutationsList, observer) => {
     // Check if the 'innerHTML' has changed
@@ -20,9 +13,9 @@ const observer = new MutationObserver((mutationsList, observer) => {
             // alert(`Sheep ID: ${sheep[0]}\nLatitude: ${sheep[1]}\nLongitude: ${sheep[2]}`);
             
             // Add a marker to the map
-            var marker = L.marker([sheep[1], sheep[2]], {icon:sheep_icon}).addTo(map);
-            marker.bindPopup(`Sheep ID: ${sheep[0]}`).openPopup();
-            map.setView([sheep[1], sheep[2]], 15);
+            var sheep_marker = L.marker([sheep[1], sheep[2]], {icon:sheep_icon}).addTo(map);
+            sheep_marker.bindPopup(`Sheep ID: ${sheep[0]}`).openPopup();
+            sheep_marker.setView([sheep[1], sheep[2]], 15);
         }
     }
 });
